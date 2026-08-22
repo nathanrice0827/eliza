@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400;1,9..144,500&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --color-cream: #FAF7F2;
+  --color-cream-dark: #F2EDE4;
+  --color-rose-100: #F9EDE9;
+  --color-rose-200: #F0D5CE;
+  --color-rose-300: #E8C5C1;
+  --color-rose-400: #D4948D;
+  --color-rose-500: #B8706A;
+  --color-sage-200: #D5E3D7;
+  --color-sage-300: #C5D9C8;
+  --color-sage-400: #91B898;
+  --color-lavender-300: #D4C5E2;
+  --color-lavender-400: #A893C8;
+  --color-stone-warm: #8C7B6E;
+  --color-stone-mid: #6B5C52;
+  --color-stone-dark: #3D2E28;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-cream);
+  color: var(--color-stone-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Utility classes */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-sans);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-rose-300);
+  border-radius: 3px;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-rose-200);
+  color: var(--color-stone-dark);
+}
