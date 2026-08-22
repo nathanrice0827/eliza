@@ -251,12 +251,26 @@ export default function QuoteForm() {
                   </div>
                 </div>
 
-                {/* Budget */}
+                {/* Budget / Target Price */}
                 <div>
-                  <p className="block text-[11px] tracking-[0.2em] uppercase text-[#8C7B6E] mb-3 font-light">
-                    Budget Range *
-                  </p>
-                  <div className="flex flex-wrap gap-2.5">
+                  <label
+                    htmlFor="quote-budget"
+                    className="block text-[11px] tracking-[0.2em] uppercase text-[#8C7B6E] mb-2.5 font-light"
+                  >
+                    Target Price / Budget *
+                  </label>
+                  <input
+                    id="quote-budget"
+                    name="budget"
+                    type="text"
+                    required
+                    value={formData.budget}
+                    onChange={handleChange}
+                    placeholder="Enter your target price (e.g. $350 or $200 – $500)"
+                    className="w-full bg-[#FAF7F2] border border-[#E8C5C1] rounded-xl px-4 py-3.5 text-[#3D2E28] placeholder-[#C5B5AB] text-sm font-light focus:outline-none focus:border-[#D4948D] focus:ring-2 focus:ring-[#E8C5C1]/50 transition-all mb-3"
+                  />
+                  <div className="flex flex-wrap gap-2 items-center">
+                    <span className="text-[11px] text-[#8C7B6E] font-light mr-1">Quick options:</span>
                     {budgets.map((b) => (
                       <button
                         key={b}
@@ -265,7 +279,7 @@ export default function QuoteForm() {
                         onClick={() =>
                           setFormData((prev) => ({ ...prev, budget: b }))
                         }
-                        className={`px-4 py-2 rounded-full text-[11px] tracking-[0.1em] font-light border transition-all duration-200 ${
+                        className={`px-3 py-1 rounded-full text-[11px] tracking-[0.05em] font-light border transition-all duration-200 ${
                           formData.budget === b
                             ? "bg-[#3D2E28] text-[#FAF7F2] border-[#3D2E28]"
                             : "border-[#E8C5C1] text-[#6B5C52] hover:border-[#D4948D]"
