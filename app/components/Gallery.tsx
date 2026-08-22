@@ -176,8 +176,10 @@ export default function Gallery() {
                     <Image
                       src={artwork.src}
                       alt={`${artwork.title} — ${artwork.medium} by Eliza Rice`}
-                      width={500}
-                      height={620}
+                      width={1200}
+                      height={1600}
+                      quality={90}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                     />
                   </div>

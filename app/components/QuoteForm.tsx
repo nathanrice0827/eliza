@@ -53,22 +53,48 @@ export default function QuoteForm() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("sending");
-
-    // Build mailto href as fallback
+  const triggerMailto = () => {
     const subject = encodeURIComponent(
       `Custom Art Commission Request — ${formData.name}`
     );
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\nArt Type: ${formData.artType}\nSize: ${formData.size}\nBudget: ${formData.budget}\n\nDescription:\n${formData.description}`
     );
-
-    // Simulate short delay, then open mailto
-    await new Promise((r) => setTimeout(r, 800));
     window.location.href = `mailto:elizarice23@icloud.com?subject=${subject}&body=${body}`;
-    setStatus("success");
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/elizarice23@icloud.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          _subject: `Custom Art Request from ${formData.name}`,
+          Name: formData.name,
+          Email: formData.email,
+          "Art Type": formData.artType || "Not specified",
+          Size: formData.size || "Not specified",
+          Budget: formData.budget || "Not specified",
+          Description: formData.description,
+        }),
+      });
+
+      if (res.ok) {
+        setStatus("success");
+      } else {
+        triggerMailto();
+        setStatus("success");
+      }
+    } catch {
+      triggerMailto();
+      setStatus("success");
+    }
   };
 
   return (

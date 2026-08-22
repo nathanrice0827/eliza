@@ -96,9 +96,11 @@ export default function Hero() {
             <Image
               src="/images/painting-shepherd-field.jpg"
               alt="Shepherd in a flower field — gouache painting by Eliza Rice"
-              width={620}
-              height={780}
-              className="w-full object-cover"
+              width={1200}
+              height={1600}
+              quality={95}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+              className="w-full h-auto object-cover"
               priority
             />
             {/* Caption */}
